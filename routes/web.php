@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CodeKnowlegeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class , 'home'])->name('home');
+
+Route::get('/dashboard', [HomeController::class , 'dashboard'])->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
+
+
+Route::resource('language' , LanguageController::class);
+Route::resource('codeKnowledge' , CodeKnowlegeController::class);
