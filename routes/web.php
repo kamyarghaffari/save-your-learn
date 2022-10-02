@@ -27,3 +27,7 @@ require __DIR__.'/auth.php';
 
 Route::resource('language' , LanguageController::class);
 Route::resource('codeKnowledge' , CodeKnowlegeController::class);
+
+Route::get('/test' , function (){
+   return config('app.env');
+});
